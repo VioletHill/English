@@ -36,7 +36,7 @@
 			$database->connectDatabase();
 
 			$sql="select * from Dictionary where name='$name'";
-			$result=mysql_query($sql,$database->getCon());
+			$result=mysql_query($sql);
 
 			$row=mysql_fetch_array($result);		
 			$dictionary=$this->setDictionaryWithRow($row);
@@ -51,7 +51,7 @@
 			$database->connectDatabase();
 
 			$sql="select * from Dictionary where id='$dictionaryID'";
-			$result=mysql_query($sql,$database->getCon());
+			$result=mysql_query($sql);
 
 			$row=mysql_fetch_array($result);		
 			$dictionary=$this->setDictionaryWithRow($row);
@@ -66,7 +66,7 @@
 			$database->connectDatabase();
 
 			$sql="select * from Dictionary limit 1";
-			$result=mysql_query($sql,$database->getCon());
+			$result=mysql_query($sql);
 
 			$row=mysql_fetch_array($result);		
 			$dictionary=$this->setDictionaryWithRow($row);

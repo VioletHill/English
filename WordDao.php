@@ -1,7 +1,7 @@
 <?php
 	include_once ('Database.php');
 	include_once ('WordBean.php');
-
+	include_once ('ProcessDao.php');
 
 	class WordDao
 	{
@@ -36,7 +36,7 @@
 			$database->connectDatabase();
 
 			$sql="select * from Word";
-			$result = mysql_query ($sql,$database->getCon());
+			$result = mysql_query ($sql);
 			
 			while ( $row = mysql_fetch_array ( $result) ) 
 			{
@@ -55,8 +55,7 @@
 			$database->connectDatabase();
 
 			$sql="select * from Word,DicWordRela where DicWordRela.dictionary_id=$dicID and DicWordRela.word_id=Word.id order by Word.id";
-
-			$result=mysql_query($sql,$database->getCon());
+			$result=mysql_query($sql);
 			while ($row=mysql_fetch_array($result))
 			{
 				$word=$this->setWordWithRow($row);
@@ -74,7 +73,7 @@
 
 			$sql="select * from Word where word='$name'";
 
-			$result=mysql_query($sql,$database->getCon());
+			$result=mysql_query($sql);
 			$row=mysql_fetch_array($result);
 			$word=$this->setWordWithRow($row);
 			$database->closeDatabase();
@@ -107,7 +106,7 @@
 			self::$blurredName=$name;
 
 			$sql="select * from Word where lower(word) like'%".$name."%'";
-			$result=mysql_query($sql,$database->getCon());
+			$result=mysql_query($sql);
 			while ($row=mysql_fetch_array($result))
 			{
 				$word=$this->setWordWithRow($row);
@@ -124,10 +123,29 @@
 		//if don't have next word return null
 		public function getNextWord(& $user)
 		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+
 			$order=$user->getOrder();
 			$dictionaryID=$user->getDictionary()->getDictionaryID();
 			$nextOrder=$order+1;
-			$sql="select Word.id,Word.word,Word.trans from Word,DicWordRela where "
+			$sql="select Word.id,Word.word,Word.trans from Word,DicWordRela,Dictionary where DicWordReal.word_order==$nextOrder and DicWordReal.dicitionary_id=$dictionaryID";
+			$result=mysql_query($sql);
+			$row=mysql_fetch_array($result);
+
+			$database->closeDatabase();
+
+			if ($row==null)
+			{
+				return null;
+			}
+			else
+			{
+				$word=$this->setWordWithRow($row);
+
+				ProcessDao::sharedProcessDao()->updateUserDictionaryAndOrder($user, $nextOrder,$user->getDictionary());
+				return $word;
+			}
 		}
 	}
 ?>

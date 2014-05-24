@@ -38,7 +38,7 @@
 			$database->connectDatabase();
 
 			$dicWordRelaIdSql="select distinct DicWordRela.id from DicWordRela,Dictionary where DicWordRela.word_order=1 and DicWordRela.dictionary_id=Dictionary.id and Dictionary.id=$dictionary_id";
-			$result=mysql_query($dicWordRelaIdSql,$database->getCon());
+			$result=mysql_query($dicWordRelaIdSql);
 			$row=mysql_fetch_array($result);
 			return $row['id'];
 		}
@@ -59,6 +59,13 @@
 			$database->closeDatabase();
 		}
 
+		//when you insert a user, you need to call this function to insert a default process
+		function inserDefaultProecess(& $user)
+		{
+			//cause dictionary already insert to the user
+			$this->changeProcess($user,$user->getDictionary()->getDictionaryID());
+		}
+
 		//$user      			 to change process user entity
 		//now dictionaryID   	 to change the dictionary'ID
 		public function changeProcess(& $user,$nowDictionaryID)
@@ -69,17 +76,15 @@
 			$database->connectDatabase();
 
 			$sql="select distinct * from Process,User,DicWordRela,Dictionary where User.id=$userId and User.id=Process.user_id and Process.DicWordRela_Id=DicWordRela.id and DicWordRela.dictionary_id=Dictionary.id and Dictionary.id=$nowDictionaryID";	
-			$result=mysql_query($sql,$database->getCon());
 
+			$result=mysql_query($sql);
 			$row=mysql_fetch_array($result);
 
-			$nowOrder;
 			$nowDictionary=DictionaryDao::sharedDictionaryDao()->getDictionaryByID($nowDictionaryID);
-
 			if ($row==null)						//row = null means need to create a new process 
 			{
-				$dicWordRela_id=self::getFirstDicWordRelaInDictionary($nowDictionaryID);
-				self::insertProcess($user,$dicWordRela_id);	
+				$dicWordRela_id=$this->getFirstDicWordRelaInDictionary($nowDictionaryID);
+				$this->insertProcess($user,$dicWordRela_id);	
 				$nowOrder=1;
 			}
 			else
@@ -89,7 +94,7 @@
 
 			//update user dictionary and order
 
-			self::updateUserDictionaryAndOrder($user,$nowOrder,$nowDictionary);
+			$this->updateUserDictionaryAndOrder($user,$nowOrder,$nowDictionary);
 			$database->closeDatabase();
 		}
 	}

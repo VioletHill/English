@@ -3,6 +3,7 @@
 	include_once ('Database.php');
 	include_once ('UserBean.php');
 	include_once ('DictionaryDao.php');
+	include_once ('ProcessDao.php');
 
 	class UserDao
 	{
@@ -21,19 +22,16 @@
 
 		public function isExistAccount($account)
 		{
-
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
 
 			$sql="select * from User where account='$account'";
-			$result=mysql_query($sql,$database->getCon());
+			$result=mysql_query($sql);
 			$database->closeDatabase();
-			if ( mysql_fetch_array($result)==null ){
-				return false;
-			}
-			else{
-				return true;
-			}
+			$row=mysql_fetch_array($result);
+			if ($row==null ) return false;
+			else return true;
+
 		}
 
 		public function setUserWithRow($row)
@@ -43,28 +41,41 @@
 			$user->setAccount($row['account']);
 			$user->setPassword($row['password']);
 			$user->setEmail($row['email']);		
-
+	
 			$dictionary=DictionaryDao::sharedDictionaryDao()->getDictionaryByID($row['now_dictionary_id']);
 			$user->setDictionary($dictionary);
-
 			$user->setOrder($row['now_order']);
 
 			return $user;
 		}
 
-		public function insertUser($user)
+		public function insertUser($account,$password,$email)
 		{
-			$dictionary=DictionaryDao::sharedDictionaryDao()->getFirstDictionary()->getDictionaryID();
+
+			$dictionary=DictionaryDao::sharedDictionaryDao()->getFirstDictionary();
+
+			$user=new UserBean();
+			$user->setAccount($account);
+			$user->setPassword($password);
+			$user->setEmail($email);
+			$user->setDictionary($dictionary);
 
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
-			$account=$user->getAccount();
-			$password=$user->getPassword();
-			$email=$user->getEmail();
-			$order=0;
-			$insert="insert into User (account, password, email,now_dictionary_id,now_order) values ('$account' , '$password', '$email',$dictionary,$order)";
+
+			$dictionaryId=$dictionary->getDictionaryID();
+
+			$insert="insert into User (account, password, email,now_dictionary_id,now_order) values ('$account' , '$password', '$email',$dictionaryId,1)";
 			mysql_query($insert);
+
+			//to set user id
+			$user=UserDao::sharedUserDao()->getUserByAccount($account);
+
+			ProcessDao::sharedProcessDao()->inserDefaultProecess($user);
+
 			$database->closeDatabase();
+
+			return $user;
 		}
 
 		public function canLogin($account,$password)
@@ -76,8 +87,9 @@
 			$row=mysql_fetch_array($result);
 			$database->closeDatabase();
 
-			if ($row!=null){
-				$user=self::setUserWithRow($row);
+			if ($row!=null)
+			{
+				$user=$this->setUserWithRow($row);
 				return $user;
 			}
 			else return null;
@@ -92,12 +104,29 @@
 			$row=mysql_fetch_array($result);
 			$database->closeDatabase();
 
-			if ($row!=null){
-				$user=self::setUserWithRow($row);
+			if ($row!=null)
+			{
+				$user=$this->setUserWithRow($row);
 				return $user;
 			}
 			else return null;
+		}
 
+		public function getUserByAccount($account)
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+
+			$sql="select * from User where account='$account'";
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+			$row=mysql_fetch_array($result);
+			if ($row!=null )
+			{
+				$user=$this->setUserWithRow($row);
+				return $user;
+			}
+			else return null;
 		}
 	}
 
