@@ -1,0 +1,109 @@
+body{
+	background-color: #e1d9ce;
+}
+
+.loginNavigation{
+	
+	width:750px;
+	height:217px;
+	margin-left:auto;
+	margin-right: auto;
+	background: url('../images/loginNav.png');
+	background-size: 100% 100%;
+}
+
+.formContainer{
+	width:416px;
+	margin-left:auto;
+	margin-right: auto;
+	margin-top:-100px;
+	position:relative;
+}
+
+/*tab button*/
+.tabButtonDiv{
+	width: 100%;
+	height:50px;
+	background-color:#e2e6ef;
+}
+
+.tabButton{
+	border: 0;	
+	width: 45%;
+	height: 80%;
+	margin-top: 2%;
+	font-size: 25px;
+	opacity: 1;
+}
+
+.tabButtonSelect{
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: #ffffff;
+	color: #adafae;
+}
+
+.tabButtonUnselect{
+	background-color: #e2e6ef;
+	color:#ffffff;
+}
+
+.loginButton{
+	float: left;
+	margin-left: 2%;
+}
+
+.registerButton{
+	float: right;
+	margin-right: 2%;
+}
+
+/*textfield*/
+.textField{
+	width:90%;
+	height:30px;
+	background-color: #f6f7f9;
+	border-radius: 5px;
+}
+
+/*login form*/
+.loginForm{
+	width:100%;
+	background-color: #ffffff;
+	text-align: center;
+}
+
+.fontText{
+	font-size:16px;
+	color:#f36e5f;
+	float:left;
+	margin-left:10%;
+	padding-top: 10px;
+}
+
+.submitButton{
+	width:220px;
+	height:40px;
+	border: 0;
+	font-size: 20px;
+	color: #ffffff;
+	cursor: pointer;
+	border-radius: 5px;
+	background-color:#f36e5d;
+	margin-top:10px;
+	margin-bottom: 10px;
+	opacity: 1;
+}
+
+.submitButton:hover{
+	opacity: 0.5;
+}
+
+/*register form*/
+.registerForm{
+	display: none;
+	width:100%;
+	background-color: #ffffff;
+	text-align: center;
+}
+

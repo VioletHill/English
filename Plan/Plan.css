@@ -1,0 +1,26 @@
+
+.mainDiv{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.backItemDiv{
+	width:750px;
+	height:31px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.backItem{
+	width:41px;
+	height:31px;
+	float: right;
+}
+
+.wordPlanDiv{
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}

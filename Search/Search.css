@@ -1,0 +1,52 @@
+
+.mainDiv{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+
+.searchField{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.inputSearch{
+	width:538px;
+	height:50px;
+	font-size: 30px;
+}	
+
+.searchButton{
+	width:122px;
+	height:40px;
+	background-image:url('../images/searchButton.png');
+	background-size: 100%,100%;
+	position: relative;
+	left:-130px;
+	top:3px;
+}
+
+.wordDisplayUl{
+	list-style: none;
+	width:660px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wordDisplayLi{
+	width:526px;
+	height:44px;
+	border:#e84c3d solid 2px;
+	border-radius: 9px;
+
+	text-align: left;
+	padding-left: 30px;
+	font-size: 27px;
+	line-height: 40px;
+	color: #e84c3d;
+
+	margin-left:-20px;
+	margin-top:10px;
+}

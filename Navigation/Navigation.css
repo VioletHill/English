@@ -1,0 +1,27 @@
+body{
+	background-color:#e1d9ce;
+}
+
+.planNavigation{
+	width:750px;
+	height:69px;
+	margin-left:auto;
+	margin-right: auto;
+	background:url("../images/navigation.png");
+	background-size:100% 100%;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.navigationDate{
+	float:right;	
+	color:#ffffff;
+	font-size: 15px;
+	margin-right:10px;
+	margin-top:20px;
+}
+
+.navigationUserInfo{
+	color:#ffffff;
+	font-size: 20px;
+}
