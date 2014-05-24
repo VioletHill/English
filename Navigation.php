@@ -4,6 +4,10 @@
 <?php 
 	require_once ('UserBean.php');
 	$user=unserialize( $_SESSION['user'] );
+	if ($user==null)
+	{
+		echo "<script>location.href='index.php';</script>"; 
+	}
 ?>
 
 <div class="planNavigation">
