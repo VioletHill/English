@@ -117,28 +117,19 @@
 			return $wordsArray;
 		}
 
-		//get to next word 
-		//user entity won't do anything
-		//return next word
-		//if don't have next word return null
-		public function getNextWord(& $user)
+		public function getWordByDictionaryAndOrder(& $dictionary,$order)
 		{
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
+			$dictionaryID=$dictionary->getDictionaryID();
 
-			$order=$user->getOrder();
-			$dictionaryID=$user->getDictionary()->getDictionaryID();
-			$nextOrder=$order+1;
 			$sql="select Word.id,Word.word,Word.trans from Word,DicWordRela,Dictionary where DicWordReal.word_order==$nextOrder and DicWordReal.dicitionary_id=$dictionaryID";
 			$result=mysql_query($sql);
 			$row=mysql_fetch_array($result);
 
 			$database->closeDatabase();
 
-			if ($row==null)
-			{
-				return null;
-			}
+			if ($row==null)	return null;
 			else
 			{
 				$word=$this->setWordWithRow($row);
@@ -146,6 +137,19 @@
 				ProcessDao::sharedProcessDao()->updateUserDictionaryAndOrder($user, $nextOrder,$user->getDictionary());
 				return $word;
 			}
+		}
+
+		//get to next word 
+		//user entity won't do anything
+		//return next word
+		//if don't have next word return null
+		public function getNextWord(& $user)
+		{
+
+			$order=$user->getOrder();
+			$dictionary=$user->getDictionary();
+
+			return $this->getWordByDictionaryAndOrder($dictionary,$order+1);
 		}
 	}
 ?>

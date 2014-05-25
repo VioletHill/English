@@ -83,6 +83,7 @@
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
 			$sql="select * from user where account='$account' and password='$password' ";
+			
 			$result=mysql_query($sql);
 			$row=mysql_fetch_array($result);
 			$database->closeDatabase();

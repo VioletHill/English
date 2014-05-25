@@ -14,56 +14,69 @@
 		{
 		}
 
-		function setUserID($userID){
+		function setUserID($userID)
+		{
 			$this->userID=$userID;
 		}
 
-		function getUserID(){
+		function getUserID()
+		{
 			return $this->userID;
 		}
 
-		function setAccount($account){
+		function setAccount($account)
+		{
 			$this->account=$account;
 		}
 
-		function getAccount(){
+		function getAccount()
+		{
 			return $this->account;
 		}
 
-		function setPassword($password){
+		function setPassword($password)
+		{
 			$this->password=$password;
 		}
 
-		function getPassword(){
+		function getPassword()
+		{
 			return $this->password;
 		}
 
 
-		function setEmail($email){
+		function setEmail($email)
+		{
 			$this->email=$email;
 		}
 
-		function getEmail(){
+		function getEmail()
+		{
 			return $this->email;
 		}
 
-		function setDictionary($dictionary){
+		function setDictionary($dictionary)
+		{
 			$this->dictionary=$dictionary;
 		}
 
-		function getDictionary(){
+		function getDictionary()
+		{
 			return $this->dictionary;
 		}
 
-		function setOrder($order){
+		function setOrder($order)
+		{
 			$this->order=$order;
 		}
 
-		function getOrder(){
+		function getOrder()
+		{
 			return $this->order;
 		}
 
-		function toJson(){
+		function toJson()
+		{
 			return urldecode (json_encode( array("userId"=>$this->userID,"account"=>urlencode($this->account),"email"=>urlencode($this->email),"dictionaryName"=>urlencode($this->dictionary->getName()),"order"=>$this->order,"dictionaryId"=>$this->dictionary->getDictionaryID() ) ) );
 		}
 	}

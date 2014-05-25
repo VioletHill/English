@@ -3,6 +3,8 @@
 
 <?php 
 	require_once ('UserBean.php');
+	require_once ('DictionaryBean.php');
+	
 	$user=unserialize( $_SESSION['user'] );
 	if ($user==null)
 	{
@@ -13,8 +15,8 @@
 <div class="planNavigation">
 	<div class="navigationDate"></div>
 	<div class="navigationUserInfo">
-		<span>WELCOME <?php echo $user->getAccount() ?></span>
-		<span class="navigationDictionary"></span>
-		<span class="navigatonnProcess"></span>
+		<span id="navAccount">WELCOME <?php echo $user->getAccount(); ?></span>
+		<span id="navDictionary" class="navigationDictionary"><?php echo $user->getDictionary()->getName(); ?></span>
+		<span id="navProcess" class="navigatonnProcess"> </span>
 	</div>
 </div>

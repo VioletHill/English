@@ -1,4 +1,5 @@
-<?php session_start()
+<?php 
+	session_start();
 ?>
 
 <html>
@@ -30,6 +31,7 @@
 			}
 
 		</script>
+
 	</head>
 	<body>
 
@@ -44,10 +46,8 @@
 				<input type="button"  class="searchButton" onclick="searchClick()"/>
 			</div>
 
-
 			<div>
-				<ul class="wordDisplayUl">
-				</ul>
+				<ul class="wordDisplayUl"></ul>
 			</div>
 
 		</div>

@@ -56,6 +56,9 @@
 			$update="update user set now_dictionary_id=$dictionaryId,now_order=$order where id=$userId";
 			mysql_query($update);
 
+			//here is important  remember to refresh session for user
+			$_SESSION['user']=serialize($user);
+
 			$database->closeDatabase();
 		}
 

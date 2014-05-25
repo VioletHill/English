@@ -4,7 +4,6 @@
 
 	
 	$dictionaryName=$_GET["Dictionary"];
-	$_POST[]
 	$dictionaryDao=DictionaryDao::sharedDictionaryDao();
 	//$results=$dictionaryDao->getDictionaryByID(1);
 	$results=$dictionaryDao->getDictionaryByName($dictionaryName);

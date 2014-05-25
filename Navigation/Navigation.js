@@ -11,3 +11,8 @@ function setDate() {
     var weekDayStr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     $(".navigationDate").html(year + '/' + month + '/' + day + '\t' + weekDayStr[weekDay]);
 }
+
+function resetNavWithUser(user) {
+    $("#navAccount").html('WELCOME' + user.account);
+    $("#navDictionary").html(user.dictionaryName);
+}
