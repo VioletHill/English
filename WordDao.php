@@ -123,7 +123,7 @@
 			$database->connectDatabase();
 			$dictionaryID=$dictionary->getDictionaryID();
 
-			$sql="select Word.id,Word.word,Word.trans from Word,DicWordRela,Dictionary where DicWordReal.word_order==$nextOrder and DicWordReal.dicitionary_id=$dictionaryID";
+			$sql="select distinct Word.id,Word.word,Word.trans from Word,DicWordRela,Dictionary where DicWordRela.word_order=$order and DicWordRela.dictionary_id=$dictionaryID and DicWordRela.word_id=Word.id";
 			$result=mysql_query($sql);
 			$row=mysql_fetch_array($result);
 
@@ -133,8 +133,6 @@
 			else
 			{
 				$word=$this->setWordWithRow($row);
-
-				ProcessDao::sharedProcessDao()->updateUserDictionaryAndOrder($user, $nextOrder,$user->getDictionary());
 				return $word;
 			}
 		}
@@ -145,11 +143,34 @@
 		//if don't have next word return null
 		public function getNextWord(& $user)
 		{
-
 			$order=$user->getOrder();
 			$dictionary=$user->getDictionary();
 
-			return $this->getWordByDictionaryAndOrder($dictionary,$order+1);
+			$word=$this->getWordByDictionaryAndOrder($dictionary,$order+1);
+			if ($word!=null)
+			{
+				ProcessDao::sharedProcessDao()->updateUserDictionaryAndOrder($user, $order+1,$user->getDictionary());
+			}
+			return $word;
+		}
+
+		public function getUserWord(& $user)
+		{
+			$order=$user->getOrder();
+			$dictionary=$user->getDictionary();
+
+			$word=$this->getWordByDictionaryAndOrder($dictionary,$order);
+			ProcessDao::sharedProcessDao()->updateUserDictionaryAndOrder($user, $order,$user->getDictionary());	
+			return $word;	
+		}
+
+		public function clearUserRecordInDictionary(& $user,$dictionary)
+		{
+			$word=$this->getWordByDictionaryAndOrder($dictionary,1);
+			if ($word!=null)
+			{
+				ProcessDao::sharedProcessDao()->updateUserDictionaryAndOrder($user, 1,$user->getDictionary());
+			}
 		}
 	}
 ?>
