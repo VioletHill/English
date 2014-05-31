@@ -54,8 +54,9 @@
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
 
-			$sql="select * from Word,DicWordRela where DicWordRela.dictionary_id=$dicID and DicWordRela.word_id=Word.id order by DicWordReal.order";
+			$sql="select * from Word,DicWordRela where DicWordRela.dictionary_id=$dicID and DicWordRela.word_id=Word.id order by DicWordRela.word_order";
 			$result=mysql_query($sql);
+			
 			while ($row=mysql_fetch_array($result))
 			{
 				$word=$this->setWordWithRow($row);
