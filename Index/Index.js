@@ -104,7 +104,7 @@
                     shake($(".formContainer"));
                 } else {
                     //edit code here
-                    alert("login success!  user has been save to sessioin");
+                    window.location = "choose.php";
                 }
                 isSubmit = false;
             },

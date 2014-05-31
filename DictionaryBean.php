@@ -46,7 +46,7 @@
 			$this->count=$count;
 		}
 
-		public function getCount($count)
+		public function getCount()
 		{
 			return $this->count;
 		}

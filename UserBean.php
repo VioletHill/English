@@ -77,7 +77,12 @@
 
 		function toJson()
 		{
-			return urldecode (json_encode( array("userId"=>$this->userID,"account"=>urlencode($this->account),"email"=>urlencode($this->email),"dictionaryName"=>urlencode($this->dictionary->getName()),"order"=>$this->order,"dictionaryId"=>$this->dictionary->getDictionaryID() ) ) );
+			return urldecode (json_encode( array("userId"=>$this->userID,"account"=>urlencode($this->account),"email"=>urlencode($this->email),"dictionaryName"=>urlencode($this->dictionary->getName()),"order"=>$this->order,"dictionaryId"=>$this->dictionary->getDictionaryID(),"process"=>$this->getProcess() ) ) );
+		}
+
+		function getProcess()
+		{
+			return $this->order."/".$this->dictionary->getCount();
 		}
 	}
 ?>

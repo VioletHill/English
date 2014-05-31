@@ -13,10 +13,10 @@
 ?>
 
 <div class="planNavigation">
-	<div class="navigationDate"></div>
+	<div class="navigationDate">a</div>
 	<div class="navigationUserInfo">
 		<span id="navAccount">WELCOME <?php echo $user->getAccount(); ?></span>
 		<span id="navDictionary" class="navigationDictionary"><?php echo $user->getDictionary()->getName(); ?></span>
-		<span id="navProcess" class="navigatonnProcess"> </span>
+		<span id="navProcess" class="navigatonnProcess"><?php echo $user->getProcess()?> </span>
 	</div>
 </div>

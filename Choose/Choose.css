@@ -1,0 +1,40 @@
+a:hover{
+	cursor: pointer;
+}
+
+.mainDiv{
+	width:750px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.chooseContainer{
+	width:652px;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.leftContainer{
+	float: left;
+	width: 257px;
+	margin-left:10px; 
+}
+
+.midiumContainer{
+	float: left;
+	width: 152px;
+	margin-left: 10px;
+}
+
+.rightContainer{
+	float:left;
+	width:203px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.welcomeInfo{
+	color: #f36e5d;
+	font-size: 22px;
+}

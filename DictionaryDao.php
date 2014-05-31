@@ -75,5 +75,10 @@
 			return $dictionary;	
 		}
 
+		public function getWordCountByDictionary($dictionary)
+		{
+			
+		}
+
 	}
 ?>

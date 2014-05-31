@@ -13,6 +13,7 @@ function setDate() {
 }
 
 function resetNavWithUser(user) {
-    $("#navAccount").html('WELCOME' + user.account);
+    $("#navAccount").html('WELCOME  ' + user.account);
     $("#navDictionary").html(user.dictionaryName);
+    $("#navProcess").html(user.process);
 }
