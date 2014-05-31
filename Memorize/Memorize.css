@@ -1,0 +1,95 @@
+.mainDiv{
+	width: 665px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.memorizeDetailButton{
+	position: relative;
+	left: 30px;
+}
+
+.backButton{
+	position: relative;
+	left:50px;
+}
+
+.wordContainer{
+	clear:both;
+	padding-top: 10px;
+}
+
+.wordItem{
+	list-style: none;
+	margin-left: 0;
+}
+
+
+.wordCell{
+	margin-left: 0;
+	width: 665px;
+	height:57px;
+	background: url('../images/item_bg.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	white-space: nowrap;
+
+}
+
+.wordTitle{
+	display: inline-block;
+	width:150px;
+	font-size: 23px;
+	margin-left: 20px;
+	color: #ffffff;
+	line-height: 57px;
+}
+
+.wordVoice{
+	display: inline-block;
+	background: url('../images/voice.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border: none;
+	width: 25px;
+	height: 25px;
+}
+
+.wordMeaning{
+	display: inline-block;
+	width:400px;
+	overflow: hidden;
+	margin-left:10px;
+	font-size: 18px;
+	color:#ffffff;
+	text-overflow:ellipsis;                    
+    -o-text-overflow:ellipsis;		/*fire-fox*/
+}
+
+.page{
+	clear:both;
+	float:right;
+	margin-top: 10px;
+}
+
+.pageButton{
+	cursor: pointer;
+	width: 23px;
+	height: 23px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border:none;
+}
+
+.lastPage{
+	background:url('../images/left.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.nextPage{
+	background:url('../images/right.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
