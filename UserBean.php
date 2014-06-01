@@ -1,5 +1,6 @@
 <?php
 	include_once ('DictionaryBean.php');
+	include_once ('UserDao.php');
 	
 	class UserBean
 	{
@@ -73,6 +74,16 @@
 		function getOrder()
 		{
 			return $this->order;
+		}
+
+		function getRanking()
+		{
+			return UserDao::sharedUserDao()->getUserRank($this);
+		}
+
+		function getUsersRanking()
+		{
+			return UserDao::sharedUserDao()->getUsersRank($this->dictionary->getDictionaryID());
 		}
 
 		function toJson()

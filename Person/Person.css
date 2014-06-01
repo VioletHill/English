@@ -1,0 +1,104 @@
+
+
+.mainDiv{
+	width: 750px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.backItemDiv{
+	width:750px;
+	height:31px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
+
+.backItem{
+	width:41px;
+	height:31px;
+	float: right;
+}
+
+.leftContainer{
+	width:50%;
+	float: left;
+}
+
+.info{
+	margin-top:20px;
+	font-size: 20px;
+	color: #f36e5d;
+}
+
+.infoAnswer{
+	margin-left: 20px;
+}
+
+.rightContainer{
+	width: 50%;
+	float:right;
+}
+
+.detailButton{
+	width:116px;
+	height:35px;
+	background: url('../images/detail.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border: none;
+	float:right;
+	margin-top:20px;
+}
+
+.detailButton:hover{
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+.rankBox{
+	float:right;
+	margin-right: 10%;
+	width:80%;
+	height:400px;
+	background-color:#ffffff;
+	border-radius: 5px;
+	border: 2px solid #f36e5d;	
+}
+
+.rankTitle{
+	text-align: center;
+	color:#f36e5d;
+	font-size: 20px;
+	padding-top: 10px;
+}
+
+.rankPerson{
+	padding-left: 10px;
+	color:#f36e5d;
+	font-size: 20px;
+}
+
+.rankName{
+	position: relative;
+	top:-10px;
+	left:10px;
+}
+
+.rankNumber{
+	display: inline-block;
+	width:32px;
+	height:36px;
+	font-size: 25px;
+	text-align: center;
+}
+
+.rankNumberName{
+	position: relative;
+	left:17px;
+}
+
+.rankSelf{
+	color:green;
+}

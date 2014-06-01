@@ -129,6 +129,42 @@
 			}
 			else return null;
 		}
+
+
+		public function getUsersRank($dictionaryId)
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+
+			$sql="select distinct user.id,user.account from DicWordRela,process,user where process.DicWordRela_id=DicWordRela.id and DicWordRela.dictionary_id=$dictionaryId and process.user_id=user.id order by DicWordRela.word_order desc limit 10";
+		
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+
+			$users=array();
+			while ($row=mysql_fetch_array($result)){
+				array_push($users, $row['account']);	
+			}
+			return $users;
+		}
+
+		public function getUserRank($user)
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+
+			$dictionaryId=$user->getDictionary()->getDictionaryID();
+			$sql="select distinct user.id,user.account from DicWordRela,process,user where process.DicWordRela_id=DicWordRela.id and DicWordRela.dictionary_id=$dictionaryId and process.user_id=user.id order by DicWordRela.word_order desc";
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+			$totalUser=mysql_num_rows($result);
+			$rank=1;
+			while ($row=mysql_fetch_array($result)){
+				if ($row['id']==$user->getUserID()) break;
+				else $rank++;
+			}
+			return $rank."/".$totalUser;
+		}
 	}
 
 
