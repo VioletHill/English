@@ -53,9 +53,23 @@
 			$userId=$user->getUserID();
 			$dictionaryId=$dictionary->getDictionaryID();
 
+			//update user
 			$update="update user set now_dictionary_id=$dictionaryId,now_order=$order where id=$userId";
 			mysql_query($update);
 
+			//update process table
+			$query="select DicWordRela.id from DicWordRela where DicWordRela.word_order=$order and DicWordRela.dictionary_id=$dictionaryId";
+			$row=mysql_fetch_array(mysql_query($query));
+			$relaId=$row['id'];
+			
+			$processSql="select distinct Process.id from Process,DicWordRela,Dictionary where Process.DicWordRela_id=DicWordRela.id and DicWordRela.dictionary_id=Dictionary.id and Dictionary.id=$dictionaryId";
+			
+			$result=mysql_query($processSql);
+			$row=mysql_fetch_array($result);
+			$processId=$row['id'];
+
+			$updateProcess="update process set process.DicWordRela_id=$relaId where process.id=$processId ";
+			mysql_query($updateProcess);
 			//here is important  remember to refresh session for user
 			$_SESSION['user']=serialize($user);
 

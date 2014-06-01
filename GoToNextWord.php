@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	header("Content-Type: text/html; charset=utf8");
+	header("Content-Type: text/json; charset=utf8");
 
 	include_once ('UserDao.php');
 	include_once ('WordDao.php');
@@ -10,8 +10,8 @@
 	$newWord=WordDao::sharedWordDao()->getNextWord($user);
 	if ($newWord!=null)
 	{
-		echo "next";
+		echo $user->toJson();
 	}else{
-		echo "finish";
+		echo "{finish:finish}";
 	}
 ?>

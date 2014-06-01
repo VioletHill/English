@@ -59,8 +59,11 @@ function selectWord(obj) {
 
 function goToNextWord() {
     $.get("goToNextWord.php", function(data) {
-        if (data == "finish") {
+        if (data.finish == "finish") {
             alert("恭喜你 背完了所有单词");
-        } else showWord();
+        } else {
+            showWord();
+            resetNavWithUser(data);
+        }
     });
 }
