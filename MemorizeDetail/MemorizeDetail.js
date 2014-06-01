@@ -18,7 +18,6 @@ function showWord() {
 
 function getRandomOrder(words) {
     for (var i = 0; i < words.length; i++) {
-        console.log("swap")
         var random = parseInt(Math.random() * words.length);
         var temp = words[i];
         words[i] = words[random];
@@ -59,6 +58,7 @@ function selectWord(obj) {
 
 function goToNextWord() {
     $.get("goToNextWord.php", function(data) {
+        console.log(data.finish);
         if (data.finish == "finish") {
             alert("恭喜你 背完了所有单词");
         } else {

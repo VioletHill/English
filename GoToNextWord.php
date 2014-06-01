@@ -12,6 +12,6 @@
 	{
 		echo $user->toJson();
 	}else{
-		echo "{finish:finish}";
+		echo json_encode( array("finish"=>"finish"));
 	}
 ?>
