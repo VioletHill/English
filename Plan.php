@@ -19,7 +19,9 @@
 			<!-- plant Navigation is navigation  -->
 			<!-- if you want to add something in navigation just add in this div -->
 			<div class="backItemDiv">
-				<img class="backItem" src="images/back.png" />
+				<a href="choose.php">
+					<img class="backItem" src="images/back.png" />
+				</a>
 			</div>
 
 			<div class="wordPlanDiv">

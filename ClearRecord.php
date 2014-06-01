@@ -7,11 +7,7 @@
 	include_once ('WordDao.php');
 
 	$user=unserialize( $_SESSION['user'] );
-	$newWord=WordDao::sharedWordDao()->getNextWord($user);
-	if ($newWord!=null)
-	{
-		echo "next";
-	}else{
-		echo "finish";
-	}
+
+	WordDao::sharedWordDao()->clearUserRecordInDictionary($user,$user->getDictionary());
+	echo "clean successful";
 ?>

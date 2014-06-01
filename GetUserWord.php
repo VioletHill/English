@@ -7,7 +7,6 @@
 	include_once ('WordDao.php');
 
 	$user=unserialize( $_SESSION['user'] );
-	$word=WordDao::sharedWordDao()->getUserWord($user);
-	echo $word->toJson();
-	
+	$dictionary=$user->getDictionary();
+	echo $dictionary->toJson();
 ?>

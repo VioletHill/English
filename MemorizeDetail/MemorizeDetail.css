@@ -1,0 +1,78 @@
+.backGuide{
+	width:750px;
+	height:41px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.mainDiv{
+	width:680px;
+	background-color: red;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.leftContainer{
+	width:50%;
+	height:360px;
+	float:left;
+}
+
+.chooseButton{
+	width: 200px;
+	height: 43px;
+	margin-top:30px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #b5b5b5;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #ffffff;
+	font-size: 25px;
+	font-weight: normal;
+	text-align: center;
+	line-height: 43px;
+}
+
+.chooseButton:hover{
+	opacity: 0.8;
+}
+
+.nextButton{
+	cursor: pointer;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	width:136px;
+	height:35px;
+	background-image: url('../images/next.png');
+	background-repeat: no-repeat;;
+	background-size: 100% 100%;
+}
+
+.nextButton:hover{
+	opacity: 0.8;
+}
+
+.rightContainer{
+	width:50%;
+	height:360px;
+	float:right;
+}
+
+
+.transContainer{
+	width:266px;
+	height:360px;
+	float:right;
+	background-image: url('../images/trans.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.transContainer>pre{
+	color:#ffffff;
+	width:200px;
+	font-size:15px;
+	margin-left:50px;
+};
