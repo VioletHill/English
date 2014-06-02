@@ -19,14 +19,19 @@
 	float: right;
 }
 
+.box{
+	width:100%;
+}
+
 .leftContainer{
-	width:70%;
+	float:left;
+	width:60%;
 	color:#737a73;
 }
 
 .wordName{
 	display: inline-block;
-	width:200px;
+	width:180px;
 	font-size: 40px;
 }
 
@@ -46,6 +51,8 @@
 	background-size: 100% 100%;
 	border: none;
 	float:right;
+	position: relative;
+	top:5px;
 }
 
 .voice:hover{
@@ -67,12 +74,31 @@
 }
 
 .rightContainer{
-	width:30%;
-	float: left;
-	background-color: blue;
+	width:40%;
+	float: right;
+	text-align: center;
 }
 
 .markButton{
+	width:95px;
+	height:38px;
 	background: url("../images/mark.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border:none;
+}
+
+.markButton:hover{
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+.wordImage{
+	margin-top:50px;
+	width:200px;
+	height:200px;
+	border-radius: 10px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 
