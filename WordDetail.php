@@ -24,7 +24,7 @@
 		?>
 		<div class="mainDiv">
 			<div class="backItemDiv">
-				<a href="javascript:window.history.go(-1); window.reload();">
+				<a href="javascript:window.location=document.referrer">
 				<img class="backItem" src="images/back.png" />
 				</a>
 			</div>
@@ -41,7 +41,7 @@
 				</div>
 				<div class="rightContainer">
 					<div>
-						<button class="markButton"></button>
+						<button class="markButton" onclick="mark()"></button>
 					</div>
 					<div >
 						<img src="WordImages/<?php echo $word->getName(); ?>.png" class="wordImage">

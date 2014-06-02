@@ -73,9 +73,7 @@
 		{
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
-
 			$sql="select * from Word where word='$name'";
-
 			$result=mysql_query($sql);
 			$row=mysql_fetch_array($result);
 			$word=$this->setWordWithRow($row);
@@ -194,6 +192,54 @@
 			}
 			$database->closeDatabase();
 			return $words;
+		}
+
+		public function isExistMarkWord($user,$wordName)
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+
+			$userId=$user->getUserID();
+			$sql="select word.id from word,mark,user where user.id=$userId and mark.user_id=user.id and mark.word_id=word.id and word.word='$wordName'";	
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+			if (mysql_num_rows($result)==0) return false;
+			else return true;
+		}
+
+		public function insertMarkWord($user,$wordName)
+		{
+			if ($this->isExistMarkWord($user,$wordName))
+			{
+				return ;
+			}
+			else{
+				$userId=$user->getUserID();
+
+				$wordId=$this->getWordByCompleteName($wordName)->getWordID();
+
+				$database=Database::sharedDatabase();
+				$database->connectDatabase();
+				
+				$sql="insert into mark(user_id,word_id) values ($userId,$wordId)";
+				mysql_query($sql);
+				$database->closeDatabase();
+			}
+		}
+
+		public function deleteMarkWord($user,$wordName)
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+
+			$userId=$user->getUserID();
+			$sql="select mark.id from word,mark,user where user.id=$userId and mark.user_id=user.id and mark.word_id=word.id and word.word='$wordName'";	
+			$markId=mysql_fetch_array(mysql_query($sql))['id'];
+
+			$deleteSql="delete from mark where id=$markId";
+	
+			mysql_query($deleteSql);
+			$database->closeDatabase();
 		}
 	}
 ?>

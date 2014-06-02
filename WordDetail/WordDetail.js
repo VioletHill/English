@@ -22,3 +22,39 @@ function readWord() {
     myAudio.play();
 
 }
+
+var isClick = false;
+
+function mark() {
+    if (isClick) return;
+    isClick = true;
+    var word = word = $(".wordName").html();
+    $.get("Mark.php", {
+        "action": "ask",
+        "word": word
+    }, function(data) {
+
+        if (data.isExist) {
+            if (confirm("该单词在您的生词库里,需要删除吗")) {
+                $.get("Mark.php", {
+                    "action": "delete",
+                    "word": word,
+                }, function(data) {
+                    alert("该单词已经从生词库中去除");
+                    isClick = false;
+                }, "json");
+            } else isClick = false;
+        } else {
+
+            if (confirm("确认添加入生词库吗")) {
+                $.get("Mark.php", {
+                    "action": "insert",
+                    "word": word,
+                }, function(data) {
+                    alert("成功添加到生词表中");
+                    isClick = false;
+                });
+            } else isClick = false;
+        }
+    }, "json");
+}
