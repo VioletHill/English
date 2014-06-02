@@ -29,9 +29,6 @@
 	margin-left: 0;
 	width: 665px;
 	height:57px;
-	background: url('../images/item_bg.png');
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
 	white-space: nowrap;
 
 }
@@ -41,13 +38,14 @@
 	width:150px;
 	font-size: 23px;
 	margin-left: 20px;
-	color: #ffffff;
+	color: #f36e5d;
 	line-height: 57px;
+	cursor: pointer;
 }
 
 .wordVoice{
 	display: inline-block;
-	background: url('../images/voice.png');
+	background: url('../images/voice_red.png');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	border: none;
@@ -62,35 +60,8 @@
 	overflow: hidden;
 	margin-left:10px;
 	font-size: 18px;
-	color:#ffffff;
+	color:#f36e5d;
 	text-overflow:ellipsis;                    
     -o-text-overflow:ellipsis;		/*fire-fox*/
-}
-
-.page{
-	clear:both;
-	float:right;
-	margin-top: 10px;
-}
-
-.pageButton{
-	cursor: pointer;
-	width: 23px;
-	height: 23px;
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	border:none;
-}
-
-.lastPage{
-	background:url('../images/left.png');
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-}
-
-.nextPage{
-	background:url('../images/right.png');
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
 }
 

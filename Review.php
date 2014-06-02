@@ -5,9 +5,9 @@ header("Content-Type: text/html; charset=utf8");
 
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="Memorize/Memorize.css">
+		<link rel="stylesheet" type="text/css" href="Review/Review.css">
 		<script src="jquery.2.1.1.js"></script>
-		<script src="Memorize/Memorize.js"></script>
+		<script src="Review/Review.js"></script>
 	</head>
 	
 	<body>
@@ -16,9 +16,6 @@ header("Content-Type: text/html; charset=utf8");
 		?>
 		<div class="mainDiv">
 			<div class="guide" style="float:right">
-				<a href="MemorizeDetail.php" class="memorizeDetailButton">
-					<img src="images/go.png" width="37px" height="31px" class="go"/>
-				</a>
 				<a href="Choose.php" class="backButton">
 					<img src="images/back.png" width="41px" height="31px"/>
 				</a>
@@ -32,10 +29,6 @@ header("Content-Type: text/html; charset=utf8");
 				</div> -->
 			</div>
 
-			<div class="page">
-				<button class="lastPage pageButton" onclick="getLastPage()"></button>
-				<button class="nextPage pageButton" onclick="getNextPage()"></button>
-			</div>
 		</div>
 	</body>
 </html>

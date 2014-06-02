@@ -24,7 +24,7 @@
 		?>
 		<div class="mainDiv">
 			<div class="backItemDiv">
-				<a href="choose.php">
+				<a href="javascript:window.history.go(-1); window.reload();">
 				<img class="backItem" src="images/back.png" />
 				</a>
 			</div>

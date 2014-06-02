@@ -28,19 +28,19 @@ header("Content-Type: text/html; charset=utf8");
 			<div class="chooseContainer">
 				<div class="leftContainer">
 					<div>
-						<a href="person.php"><img src="images/personal_info.png" width="257px" height="192px"></a>
+						<a href="Person.php"><img src="images/personal_info.png" width="257px" height="192px"></a>
 					</div>
 					<div>
-						<a href="review.php"><img src="images/review.png" width="257px" height="126px"></a>
+						<a href="Review.php"><img src="images/review.png" width="257px" height="126px"></a>
 					</div>
 				</div>
 				
 				<div class="midiumContainer">
 					<div>
-						<a href="search.php"><img src="images/search.png" width="152px" height="237px"></a>
+						<a href="Search.php"><img src="images/search.png" width="152px" height="237px"></a>
 					</div>
 					<div>
-						<a href="plan.php"><img src="images/plan.png" width="152px" height="80px"></a>
+						<a href="Plan.php"><img src="images/plan.png" width="152px" height="80px"></a>
 					</div>
 				</div>
 				

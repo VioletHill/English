@@ -56,7 +56,7 @@
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
 
-			$sql="select Word.id,word.trans,word.word from Word,DicWordRela where DicWordRela.dictionary_id=$dicID and DicWordRela.word_id=Word.id order by DicWordRela.word_order";
+			$sql="select Word.id,word.trans,word.word,word.phoneticEn,word.phoneticUs from Word,DicWordRela where DicWordRela.dictionary_id=$dicID and DicWordRela.word_id=Word.id order by DicWordRela.word_order";
 			$result=mysql_query($sql);
 			
 			while ($row=mysql_fetch_array($result))
@@ -174,6 +174,26 @@
 			{
 				ProcessDao::sharedProcessDao()->updateUserDictionaryAndOrder($user, 1,$user->getDictionary());
 			}
+		}
+
+		public function getUserMarkWords($user)
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+
+			$userId=$user->getUserID();
+			$sql="select Word.id,word.trans,word.word,word.phoneticEn,word.phoneticUs from Word,Mark where user_id=$userId and word.id=mark.word_id";
+		
+			$result=mysql_query($sql);
+
+			$words=array();
+			while ($row=mysql_fetch_array($result))
+			{
+				$word=$this->setWordWithRow($row);
+				array_push($words,$word);
+			}
+			$database->closeDatabase();
+			return $words;
 		}
 	}
 ?>

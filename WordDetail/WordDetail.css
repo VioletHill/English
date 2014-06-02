@@ -53,12 +53,9 @@
 	float:right;
 	position: relative;
 	top:5px;
+	cursor: pointer;
 }
 
-.voice:hover{
-	cursor: pointer;
-	opacity: 0.8;
-}
 
 .transContainer{
 	width:100%;

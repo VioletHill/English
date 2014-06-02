@@ -21,7 +21,7 @@
 				</a>
 			</div>
 			
-			<div class="errorMsg" style="font-size:20px; text-align:center">
+			<div class="errorMsg" style="font-size:20px; text-align:center; color: #f36e5d;">
 			</div>
 		</div>
 	<body>
