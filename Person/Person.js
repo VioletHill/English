@@ -8,7 +8,7 @@ $(document).ready(function() {
 function setRank() {
     var name = $(".rankBox").attr("selfName");
 
-    $.get("getUsersRank", function(data) {
+    $.get("GetUsersRank.php", function(data) {
         for (var i = 0; i < data.length; i++) {
             if (i < 3) {
                 var domId = "rank" + (i + 1);
@@ -32,10 +32,10 @@ function setRank() {
                 div.append(nameSpan);
                 $(".rankPerson").append(div);
             }
-
-
         }
     }, "json");
+
+
 }
 
 function showRightContainer() {

@@ -9,6 +9,7 @@
 	if ($user==null)
 	{
 		echo "<script>location.href='index.php';</script>"; 
+		return ;
 	}
 ?>
 

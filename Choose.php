@@ -1,6 +1,8 @@
 <?php
 session_start();
+header("Content-Type: text/html; charset=utf8");
 ?>
+
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="Choose/Choose.css">

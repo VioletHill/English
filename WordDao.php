@@ -24,6 +24,8 @@
 			$word->setWordID($row['id']);
 			$word->setName($row['word']);
 			$word->setTrans($row['trans']);
+			$word->setPhoneticEn($row['phoneticEn']);
+			$word->setPhoneticUs($row['phoneticUs']);
 			return $word;
 		}
 

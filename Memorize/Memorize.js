@@ -41,7 +41,6 @@ function getPageWord(index) {
         if (i >= wordsCount) break;
         addItemWord(words[i]);
     }
-    console.log(pageIndex);
 }
 
 function getLastPage() {
@@ -64,8 +63,8 @@ function getNextPage() {
 function readWord(obj) {
     word = $(obj).attr("word");
 
-    //url = "voice/" + word + ".mp3";
-    url = "voice/1.mp3"; //for test
+    url = "voice/" + word + ".mp3";
+    //url = "voice/1.mp3"; //for test
 
     myAudio = new Audio(url);
     myAudio.loop = false;

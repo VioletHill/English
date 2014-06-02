@@ -1,0 +1,78 @@
+.mainDiv{
+	width: 750px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.backItemDiv{
+	width:750px;
+	height:31px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
+
+.backItem{
+	width:41px;
+	height:31px;
+	float: right;
+}
+
+.leftContainer{
+	width:70%;
+	color:#737a73;
+}
+
+.wordName{
+	display: inline-block;
+	width:200px;
+	font-size: 40px;
+}
+
+.phonetic{
+	font-size: 18px;
+}
+
+.phoneticUs{
+	margin-left: 10px;
+}
+
+.voiceButton{
+	width:32px;
+	height:30px;
+	background: url("../images/voice_white.png");
+	background-repeat: no-repeat;;
+	background-size: 100% 100%;
+	border: none;
+	float:right;
+}
+
+.voice:hover{
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+.transContainer{
+	width:100%;
+	height:360px;
+}
+
+.transContainer>pre{
+	padding-top: 20px;
+	color:#737a73;
+	width:90%;
+	font-size:20px;
+	word-wrap:break-word;
+}
+
+.rightContainer{
+	width:30%;
+	float: left;
+	background-color: blue;
+}
+
+.markButton{
+	background: url("../images/mark.png");
+}
+

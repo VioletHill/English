@@ -1,4 +1,4 @@
-$(".planNavigation").ready(function() {
+﻿$(".planNavigation").ready(function() {
     setDate();
 });
 

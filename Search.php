@@ -1,4 +1,5 @@
 <?php 
+	header("Content-Type: text/html; charset=utf8");
 	session_start();
 ?>
 
@@ -27,11 +28,19 @@
 						var spanNumber=$('<span class="wordDisplayNumberSpan">'+ (i+1)+"."+'</span>');
 						var spanTrans=$('<span class="wordDisplayTrans">'+word.name+' '+word.trans+'</span>');
 						var div=$('<div class="wordDisplayDiv"></div>');
+						$(div).attr("word",word.name);
+						$(div).click(function(){
+							gotoDetailWord(this);
+						})
 						div.append(spanNumber);
 						div.append(spanTrans);
 						$(".wordSearchContainer").append(div);
 					}
 				},"json");
+			}
+
+			function gotoDetailWord(obj){
+				window.location="WordDetail.php?word="+$(obj).attr("word");
 			}
 
 		</script>

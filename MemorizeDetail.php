@@ -1,5 +1,6 @@
-<?php
+﻿<?php
 session_start();
+header("Content-Type: text/json; charset=utf8");
 ?>
 
 <html>
