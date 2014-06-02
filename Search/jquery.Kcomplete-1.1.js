@@ -33,7 +33,7 @@
                     if (options.selectCount == 'scrollbar') {
                         NUMBER > options.scrollBarCount ? CURRENT.scrollTop(CURRENT.scrollTop() + parseInt(options.liHeight)) : CURRENT.scrollTop(0);
                     }
-                    break
+                    break;
 
                 case 38:
                     NUMBER <= 1 ? NUMBER = SELECT_NUM : NUMBER = NUMBER - 1;
@@ -51,11 +51,12 @@
                             CURRENT.scrollTop(SELECT_NUM * parseInt(options.liHeight));
                         }
                     }
-                    break
+                    break;
 
                 case 13:
                     CURRENT.trigger('boxClose');
-                    break
+                    searchClick();
+                    break;
             }
         }
 

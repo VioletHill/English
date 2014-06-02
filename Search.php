@@ -21,11 +21,15 @@
 			function searchClick(){
 				var inputText=$(".inputSearch").attr("value");
 				$.get("Search/WordSearchServer.php",{"input":inputText},function(data){
-					$(".wordDisplayUl").find("li").remove();
+					$(".wordDisplayDiv").remove();
 					for (var i=0; i<data.length; i++){
 						var word=data[i];
-						var li=$('<li class="wordDisplayLi">' + (i+1)+' '+word.name+' '+word.trans+'</li>');
-						li.appendTo( $(".wordDisplayUl") );
+						var spanNumber=$('<span class="wordDisplayNumberSpan">'+ (i+1)+"."+'</span>');
+						var spanTrans=$('<span class="wordDisplayTrans">'+word.name+' '+word.trans+'</span>');
+						var div=$('<div class="wordDisplayDiv"></div>');
+						div.append(spanNumber);
+						div.append(spanTrans);
+						$(".wordSearchContainer").append(div);
 					}
 				},"json");
 			}
@@ -46,8 +50,8 @@
 				<input type="button"  class="searchButton" onclick="searchClick()"/>
 			</div>
 
-			<div>
-				<ul class="wordDisplayUl"></ul>
+			<div class="wordSearchContainer">
+			
 			</div>
 
 		</div>
