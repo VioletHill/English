@@ -7,7 +7,7 @@
 
 
 .searchField{
-	width:638px;
+	width:600px;
 	height:50px;
 	margin-left: auto;
 	margin-right: auto;	
@@ -30,12 +30,21 @@
 	background-repeat: no-repeat;
 	background-size: 100%,100%;
 	position: relative;
-	left:-130px;
+	margin-left:-130px;
 	top:3px;
 }
 
+
+.backItem{
+	width:40px;
+	height:40px;
+	margin-left: 30px;
+	position: relative;
+	top:5px;
+}
+
 .wordSearchContainer{
-	width:638px;
+	width:600px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -43,9 +52,7 @@
 .wordDisplayDiv{
 	width:100%;
 	height:44px;
-
 	margin-top: 20px;
-
 	border:#e84c3d solid 2px;
 	border-radius: 9px;
 	text-align: left;
@@ -70,3 +77,4 @@
 	text-overflow:ellipsis; 	                   
     -o-text-overflow:ellipsis;		/*fire-fox*/
 }
+

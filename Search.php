@@ -45,10 +45,22 @@
 
 		<!-- mainDiv is the main Container -->
 		<div class="mainDiv">
+			
+
+			
 			<div class="SearchField">
 				<input type="text" name="wd" class="K_text inputSearch" autocomplete="off" />
 				<input type="button"  class="searchButton" onclick="searchClick()"/>
+				
+				<a href="choose.php">
+					<img class="backItem" src="images/home.png" />
+				</a>
+			
+				<div style="clear:both"></div>
 			</div>
+
+
+		
 
 			<div class="wordSearchContainer">
 			
