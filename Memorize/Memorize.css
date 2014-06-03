@@ -1,3 +1,7 @@
+a{
+	text-decoration: none;	
+}
+
 .mainDiv{
 	width: 665px;
 	margin-left: auto;
@@ -6,12 +10,20 @@
 
 .memorizeDetailButton{
 	position: relative;
+	text-decoration: none;
 	left: 30px;
 }
 
 .backButton{
 	position: relative;
 	left:50px;
+}
+
+.go{
+	width:37px;
+	height:31px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 
 .wordContainer{
@@ -33,7 +45,6 @@
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	white-space: nowrap;
-
 }
 
 .wordTitle{

@@ -2,6 +2,10 @@ body{
 	background-color:#e1d9ce;
 }
 
+a{
+	text-decoration: none;
+}
+
 .planNavigation{
 	width:750px;
 	height:77px;

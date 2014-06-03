@@ -16,8 +16,8 @@ header("Content-Type: text/html; charset=utf8");
 		?>
 		<div class="mainDiv">
 			<div class="guide" style="float:right">
-				<a href="MemorizeDetail.php" class="memorizeDetailButton">
-					<img src="images/go.png" width="37px" height="31px" class="go"/>
+				<a href="MemorizeDetail.php" width="37px" class="memorizeDetailButton" >
+					<img src="images/go.png" class="go">
 				</a>
 				<a href="Choose.php" class="backButton">
 					<img src="images/back.png" width="41px" height="31px"/>

@@ -16,9 +16,11 @@ header("Content-Type: text/html; charset=utf8");
 		?>
 		
 		<div class="BackGuide">
+
 			<a href="Memorize.php"  style="float:right">
 				<img src="images/back.png" width="41px" height="31px"/>
 			</a>
+			<button class="markButton" onclick="mark()" ></button>
 		</div>
 		
 		<div class="mainDiv">
@@ -33,6 +35,7 @@ header("Content-Type: text/html; charset=utf8");
 			</div>
 
 			<div class="rightContainer">
+
 				<div class="transContainer"><pre></pre></div>
 			</div>
 		</div>

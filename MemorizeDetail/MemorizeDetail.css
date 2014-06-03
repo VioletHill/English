@@ -76,4 +76,16 @@
 	font-size:15px;
 	margin-left:20px;
 	word-wrap:break-word;
-};
+}
+
+.markButton{
+	width:95px;
+	height:38px;
+	background: url("../images/mark.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border:none;
+	float:right;
+	margin-right: 50px;
+	margin-bottom: 20px;
+}
