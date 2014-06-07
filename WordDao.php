@@ -124,7 +124,7 @@
 			$database->connectDatabase();
 			$dictionaryID=$dictionary->getDictionaryID();
 
-			$sql="select distinct Word.id,Word.word,Word.trans from Word,DicWordRela,Dictionary where DicWordRela.word_order=$order and DicWordRela.dictionary_id=$dictionaryID and DicWordRela.word_id=Word.id";
+			$sql="select distinct Word.id,Word.word,Word.trans,word.phoneticEn,word.phoneticUs  from Word,DicWordRela,Dictionary where DicWordRela.word_order=$order and DicWordRela.dictionary_id=$dictionaryID and DicWordRela.word_id=Word.id";
 			$result=mysql_query($sql);
 			$row=mysql_fetch_array($result);
 
