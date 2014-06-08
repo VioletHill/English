@@ -5,7 +5,6 @@
 
 	class WordDao
 	{
-
 		private static $_sharedWordDao=null;
 	
 		public static function sharedWordDao()
