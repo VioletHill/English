@@ -1,3 +1,11 @@
+<?php	
+	session_start();
+
+	header("Content-Type: text/html; charset=utf8");
+
+ 	$_SESSION['user']=null;
+?>
+
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="Index/Index.css">

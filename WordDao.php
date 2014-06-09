@@ -240,5 +240,73 @@
 			mysql_query($deleteSql);
 			$database->closeDatabase();
 		}
+
+
+		// for admin
+
+		public function isExistWordName($name)
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+			$sql="select * from Word where word='$name'";
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+			if (mysql_num_rows($result)==0) return false;
+			else return true;
+		
+		}
+
+		public function isExistDicRela($wordId,$dictionaryId)
+		{
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+			$sql="select * from DicWordRela where word_id=$wordId and dictionary_id=$dictionaryId";
+			$result=mysql_query($sql);
+			$database->closeDatabase();
+			if (mysql_num_rows($result)==0) return false;
+			else return true;
+		}
+
+		public function insertWordWithWordAndDictionary($word,$dictionary)
+		{
+			
+			$name=$word->getName();
+			$trans=$word->getTrans();
+			$phoneticEn=$word->getPhoneticEn();
+			$phoneticUs=$word->getPhoneticUs();
+
+			
+			if (!$this->isExistWordName($name))
+			{
+				$database=Database::sharedDatabase();
+				$database->connectDatabase();
+				$insertWord="insert into Word (word,trans,phoneticEn,phoneticUs) values ('$name','$trans','$phoneticEn','$phoneticUs')";
+				mysql_query($insertWord);
+				$database->closeDatabase();
+			}
+
+			$word=$this->getWordByCompleteName($name);
+
+			$database=Database::sharedDatabase();
+			$database->connectDatabase();
+			$wordId=$word->getWordID();
+			$dictionaryId=$dictionary->getDictionaryID();
+			$wordOrderSql="select count(*) from DicWordRela where dictionary_id=$dictionaryId";
+			$result=mysql_query($wordOrderSql);
+			$wordOrder=mysql_fetch_array($result)[0];
+			$wordOrder=$wordOrder+1;
+			$database->closeDatabase();
+
+			if (!$this->isExistDicRela($wordId,$dictionaryId)){
+				$database=Database::sharedDatabase();
+				$database->connectDatabase();
+				$inserRelaSql="insert into DicWordRela(word_id,dictionary_id,word_order) values ($wordId,$dictionaryId,$wordOrder)";
+				echo $insertRelaSql;
+				mysql_query($inserRelaSql);
+				$database->closeDatabase();
+			}
+
+			return ;
+		}
 	}
 ?>

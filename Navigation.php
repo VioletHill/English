@@ -19,5 +19,6 @@
 		<span id="navAccount">WELCOME <?php echo $user->getAccount(); ?></span>
 		<span id="navDictionary" class="navigationDictionary"><?php echo $user->getDictionary()->getName(); ?></span>
 		<span id="navProcess" class="navigatonnProcess"><?php echo $user->getProcess()?> </span>
+		<span style="float:right; margin-right:10px;"><a href="index.php" style="color:white">log out</a></span>
 	</div>
 </div>

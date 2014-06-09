@@ -72,7 +72,7 @@
 		
 
 			<div class="wordSearchContainer">
-			
+				<div></div>
 			</div>
 
 		</div>
