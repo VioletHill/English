@@ -24,11 +24,10 @@
 		{
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
-
 			$sql="select * from User where account='$account'";
 			$result=mysql_query($sql);
-			$database->closeDatabase();
 			$row=mysql_fetch_array($result);
+			$database->closeDatabase();
 			if ($row==null ) return false;
 			else return true;
 
