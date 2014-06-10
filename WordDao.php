@@ -301,7 +301,6 @@
 				$database=Database::sharedDatabase();
 				$database->connectDatabase();
 				$inserRelaSql="insert into DicWordRela(word_id,dictionary_id,word_order) values ($wordId,$dictionaryId,$wordOrder)";
-				echo $insertRelaSql;
 				mysql_query($inserRelaSql);
 				$database->closeDatabase();
 			}

@@ -8,14 +8,13 @@
 	include_once ('DictionaryDao.php');
 
 
-	$name=$_GET['word'];
-	$trans=$_GET['trans'];
-	$phonetic=$_GET['phonetic'];
-	echo $trans;
-	echo $phonetic;
+	$name=$_POST['word'];
+	$trans=$_POST['trans'];
+	$phonetic=$_POST['phonetic'];
+
 	if ($name==null) $name="";
 	if ($trans==null) $trans="";
-	if ($phonetic=="") $phonetic="";
+	if ($phonetic==null) $phonetic="";
 
 	$word=new WordBean();
 	$word->setName($name);
@@ -23,10 +22,12 @@
 	$word->setPhoneticEn($phonetic);
 	$word->setPhoneticUs($phonetic);
 	
-	$dictionaryName=array("cet4","cet6","kaoyan","ielts","toelf");
+	$dictionaryName=array("cet4","cet6","kaoyan","ielts","toefl");
 	for ($i=0; $i<5; $i++)
 	{
-		$dName=$_GET[$dictionaryName[$i]];
+		
+		$dName=$_POST[$dictionaryName[$i]];
+
 		if ($dName=="true")
 		{
 			$dictionary=DictionaryDao::sharedDictionaryDao()->getDictionaryByName($dictionaryName[$i]);

@@ -7,7 +7,7 @@
 		private $hostName="localhost";
 		private $account="root";
 		private $password="";
-		private $databaseName="English";
+		private $databaseName="newEnglish";
 		private $con=null;
 		private $isConnect=false;
 

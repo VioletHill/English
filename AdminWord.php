@@ -23,9 +23,8 @@
 			 	var cet6=document.getElementById("cet6").checked;
 			 	var kaoyan=document.getElementById("kaoyan").checked;
 			 	var ielts=document.getElementById("ielts").checked;
-			 	var toelf=document.getElementById("toelf").checked;
-
-			 	$.get("WordAdminInsert.php",{word:word,phonetic:phonetic,trans:trans,cet4:cet4,cet6:cet6,kaoyan:kaoyan,ielts:ielts,toelf:toelf},function(data){
+			 	var toefl=document.getElementById("toefl").checked;
+			 	$.post("WordAdminInsert.php",{word:word,phonetic:phonetic,trans:trans,cet4:cet4,cet6:cet6,kaoyan:kaoyan,ielts:ielts,toefl:toefl},function(data){
 			 			alert("finish");
 			 	});
 			}
@@ -75,7 +74,7 @@
 							<input id="ielts" type="checkbox" checked="checked"> IELTS
 						</label>
 						<label class="checkbox">
-							<input id="toelf" type="checkbox" checked="checked"> TOELF
+							<input id="toefl" type="checkbox" checked="checked"> TOEFL
 						</label>
 						
 					</div>
