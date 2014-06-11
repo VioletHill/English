@@ -56,7 +56,7 @@
 			$database->connectDatabase();
 
 			$sql="select Word.id,word.trans,word.word,word.phoneticEn,word.phoneticUs from Word,DicWordRela where DicWordRela.dictionary_id=$dicID and DicWordRela.word_id=Word.id order by DicWordRela.word_order";
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 			
 			while ($row=mysql_fetch_array($result))
 			{
@@ -106,7 +106,7 @@
 			self::$blurredName=$name;
 
 			$sql="select * from Word where lower(word) like'%".$name."%'";
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 			while ($row=mysql_fetch_array($result))
 			{
 				$word=$this->setWordWithRow($row);

@@ -4,9 +4,9 @@
 	include_once('WordDao.php');
 	$wordName=$_GET['word'];
 	$word=WordDao::sharedWordDao()->getWordByCompleteName($wordName);
-				if ($word->getWordID()==null)			//wrong url
+	if ($word->getWordID()==null)			//wrong url
 	{
-		echo "<script>location.href='WordDetailNoFound.php';</script>";
+		echo "<script> window.location.href='WordDetailNoFound.php' </script>";
 		return  ;
 	}
 ?>
