@@ -1,4 +1,5 @@
 <?php
+	ini_set('memory_limit','56M');
 	require_once ('Database.php');
 	require_once ('DictionaryBean.php');
 	require_once ('WordDao.php');
@@ -36,7 +37,7 @@
 			$database->connectDatabase();
 
 			$sql="select * from Dictionary where name='$name'";
-			$result=mysql_unbuffered_query($sql);
+			$result=mysql_query($sql);
 
 			$row=mysql_fetch_array($result);		
 			$dictionary=$this->setDictionaryWithRow($row);
@@ -51,7 +52,7 @@
 			$database->connectDatabase();
 
 			$sql="select * from Dictionary where id='$dictionaryID'";
-			$result=mysql_unbuffered_query($sql);
+			$result=mysql_query($sql);
 
 			$row=mysql_fetch_array($result);		
 			$dictionary=$this->setDictionaryWithRow($row);
@@ -66,7 +67,7 @@
 			$database->connectDatabase();
 
 			$sql="select * from Dictionary limit 1";
-			$result=mysql_unbuffered_query($sql);
+			$result=mysql_query($sql);
 
 			$row=mysql_fetch_array($result);		
 			$dictionary=$this->setDictionaryWithRow($row);

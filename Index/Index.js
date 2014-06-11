@@ -48,7 +48,7 @@
             } else if (focusID == "registerPassword") {
                 getFocus($("#registerPasswordConfirm"));
             } else if (focusID == "registerPasswordConfirm") {
-                loginButtonClick();
+                registerButtonClick();
             }
         }
     }
