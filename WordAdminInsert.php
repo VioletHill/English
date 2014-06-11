@@ -8,9 +8,9 @@
 	include_once ('DictionaryDao.php');
 
 
-	$name=$_POST['word'];
-	$trans=$_POST['trans'];
-	$phonetic=$_POST['phonetic'];
+	$name=$_GET['word'];
+	$trans=$_GET['trans'];
+	$phonetic=$_GET['phonetic'];
 
 	if ($name==null) $name="";
 	if ($trans==null) $trans="";
@@ -26,7 +26,7 @@
 	for ($i=0; $i<5; $i++)
 	{
 		
-		$dName=$_POST[$dictionaryName[$i]];
+		$dName=$_GET[$dictionaryName[$i]];
 
 		if ($dName=="true")
 		{

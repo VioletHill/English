@@ -24,7 +24,7 @@
 			 	var kaoyan=document.getElementById("kaoyan").checked;
 			 	var ielts=document.getElementById("ielts").checked;
 			 	var toefl=document.getElementById("toefl").checked;
-			 	$.post("WordAdminInsert.php",{word:word,phonetic:phonetic,trans:trans,cet4:cet4,cet6:cet6,kaoyan:kaoyan,ielts:ielts,toefl:toefl},function(data){
+			 	$.get("WordAdminInsert.php",{word:word,phonetic:phonetic,trans:trans,cet4:cet4,cet6:cet6,kaoyan:kaoyan,ielts:ielts,toefl:toefl},function(data){
 			 			alert("finish");
 			 	});
 			}
