@@ -32,8 +32,8 @@
 				<div class="leftContainer">
 					<div class="title">
 						<span class="wordName"><?php echo $word->getName(); ?></span>
-						<span class="phonetic phoneticEn">英: <?php echo $word->getPhoneticEn(); ?></span>
-						<span class="phonetic phoneticUs">美: <?php echo $word->getPhoneticUs(); ?></span>
+						<span class="phonetic phoneticEn">音标: <?php echo $word->getPhoneticEn(); ?></span>
+						<!-- <span class="phonetic phoneticUs">美: </span> -->
 						<button class="voiceButton" onclick="readWord()"></button>
 					</div>
 					
@@ -44,7 +44,7 @@
 						<button class="markButton" onclick="mark()"></button>
 					</div>
 					<div >
-						<img src="WordImages/<?php echo $word->getName(); ?>.png" class="wordImage">
+						<img src="WordImages/<?php echo $word->getName(); ?>.jpg" class="wordImage">
 					</div>
 				</div>
 			</div>
