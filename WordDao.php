@@ -37,7 +37,7 @@
 			$database->connectDatabase();
 
 			$sql="select * from Word";
-			$result = mysql_query ($sql);
+			$result = mysql_unbuffered_query ($sql);
 			
 			while ( $row = mysql_fetch_array ( $result) ) 
 			{
@@ -73,7 +73,7 @@
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
 			$sql="select * from Word where word='$name'";
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 			$row=mysql_fetch_array($result);
 			$word=$this->setWordWithRow($row);
 			$database->closeDatabase();
@@ -124,7 +124,7 @@
 			$dictionaryID=$dictionary->getDictionaryID();
 
 			$sql="select distinct Word.id,Word.word,Word.trans,word.phoneticEn,word.phoneticUs  from Word,DicWordRela,Dictionary where DicWordRela.word_order=$order and DicWordRela.dictionary_id=$dictionaryID and DicWordRela.word_id=Word.id";
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 			$row=mysql_fetch_array($result);
 
 			$database->closeDatabase();
@@ -181,7 +181,7 @@
 			$userId=$user->getUserID();
 			$sql="select Word.id,word.trans,word.word,word.phoneticEn,word.phoneticUs from Word,Mark where user_id=$userId and word.id=mark.word_id";
 		
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 
 			$words=array();
 			while ($row=mysql_fetch_array($result))
@@ -200,7 +200,7 @@
 
 			$userId=$user->getUserID();
 			$sql="select word.id from word,mark,user where user.id=$userId and mark.user_id=user.id and mark.word_id=word.id and word.word='$wordName'";	
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 			$database->closeDatabase();
 			if (mysql_num_rows($result)==0) return false;
 			else return true;
@@ -221,7 +221,7 @@
 				$database->connectDatabase();
 				
 				$sql="insert into mark(user_id,word_id) values ($userId,$wordId)";
-				mysql_query($sql);
+				mysql_unbuffered_query($sql);
 				$database->closeDatabase();
 			}
 		}
@@ -233,11 +233,11 @@
 
 			$userId=$user->getUserID();
 			$sql="select mark.id from word,mark,user where user.id=$userId and mark.user_id=user.id and mark.word_id=word.id and word.word='$wordName'";	
-			$markId=mysql_fetch_array(mysql_query($sql))['id'];
+			$markId=mysql_fetch_array(mysql_unbuffered_query($sql))['id'];
 
 			$deleteSql="delete from mark where id=$markId";
 	
-			mysql_query($deleteSql);
+			mysql_unbuffered_query($deleteSql);
 			$database->closeDatabase();
 		}
 
@@ -249,7 +249,7 @@
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
 			$sql="select * from Word where word='$name'";
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 			$database->closeDatabase();
 			if (mysql_num_rows($result)==0) return false;
 			else return true;
@@ -261,7 +261,7 @@
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
 			$sql="select * from DicWordRela where word_id=$wordId and dictionary_id=$dictionaryId";
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 			$database->closeDatabase();
 			if (mysql_num_rows($result)==0) return false;
 			else return true;
@@ -281,7 +281,7 @@
 				$database=Database::sharedDatabase();
 				$database->connectDatabase();
 				$insertWord="insert into Word (word,trans,phoneticEn,phoneticUs) values ('$name','$trans','$phoneticEn','$phoneticUs')";
-				mysql_query($insertWord);
+				mysql_unbuffered_query($insertWord);
 				$database->closeDatabase();
 			}
 
@@ -292,7 +292,7 @@
 			$wordId=$word->getWordID();
 			$dictionaryId=$dictionary->getDictionaryID();
 			$wordOrderSql="select count(*) from DicWordRela where dictionary_id=$dictionaryId";
-			$result=mysql_query($wordOrderSql);
+			$result=mysql_unbuffered_query($wordOrderSql);
 			$wordOrder=mysql_fetch_array($result)[0];
 			$wordOrder=$wordOrder+1;
 			$database->closeDatabase();
@@ -301,7 +301,7 @@
 				$database=Database::sharedDatabase();
 				$database->connectDatabase();
 				$inserRelaSql="insert into DicWordRela(word_id,dictionary_id,word_order) values ($wordId,$dictionaryId,$wordOrder)";
-				mysql_query($inserRelaSql);
+				mysql_unbuffered_query($inserRelaSql);
 				$database->closeDatabase();
 			}
 

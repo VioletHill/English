@@ -26,7 +26,7 @@
 
 
 			$insert="insert into Process (user_id, dicWordRela_id) values ($userID,$dicWordRela_id)";
-			mysql_query($insert);
+			mysql_unbuffered_query($insert);
 
 			$database->closeDatabase();
 		}
@@ -38,7 +38,7 @@
 			$database->connectDatabase();
 
 			$dicWordRelaIdSql="select distinct DicWordRela.id from DicWordRela,Dictionary where DicWordRela.word_order=1 and DicWordRela.dictionary_id=Dictionary.id and Dictionary.id=$dictionary_id";
-			$result=mysql_query($dicWordRelaIdSql);
+			$result=mysql_unbuffered_query($dicWordRelaIdSql);
 			$row=mysql_fetch_array($result);
 			return $row['id'];
 		}
@@ -55,24 +55,24 @@
 			
 			//update user
 			$update="update user set now_dictionary_id=$dictionaryId,now_order=$order where id=$userId";
-			mysql_query($update);
+			mysql_unbuffered_query($update);
 
 			//update process table
 			$query="select DicWordRela.id from DicWordRela where DicWordRela.word_order=$order and DicWordRela.dictionary_id=$dictionaryId";
-			$row=mysql_fetch_array(mysql_query($query));
+			$row=mysql_fetch_array(mysql_unbuffered_query($query));
 			$relaId=$row['id'];
 			
 			//echo $query;
 
 			$processSql="select distinct Process.id from Process,DicWordRela,Dictionary where Process.DicWordRela_id=DicWordRela.id and DicWordRela.dictionary_id=Dictionary.id and Dictionary.id=$dictionaryId and process.user_id=$userId";
 	
-			$result=mysql_query($processSql);
+			$result=mysql_unbuffered_query($processSql);
 			$row=mysql_fetch_array($result);
 			$processId=$row['id'];
 
 			$updateProcess="update process set process.DicWordRela_id=$relaId where process.id=$processId";
 
-			mysql_query($updateProcess);
+			mysql_unbuffered_query($updateProcess);
 			//here is important  remember to refresh session for user
 			$_SESSION['user']=serialize($user);
 
@@ -97,7 +97,7 @@
 
 			$sql="select distinct * from Process,User,DicWordRela,Dictionary where User.id=$userId and User.id=Process.user_id and Process.DicWordRela_Id=DicWordRela.id and DicWordRela.dictionary_id=Dictionary.id and Dictionary.id=$nowDictionaryID";	
 
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 			$row=mysql_fetch_array($result);
 
 			$nowDictionary=DictionaryDao::sharedDictionaryDao()->getDictionaryByID($nowDictionaryID);

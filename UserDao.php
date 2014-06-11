@@ -25,7 +25,7 @@
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
 			$sql="select * from User where account='$account'";
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 			$row=mysql_fetch_array($result);
 			$database->closeDatabase();
 			if ($row==null ) return false;
@@ -65,7 +65,7 @@
 			$dictionaryId=$dictionary->getDictionaryID();
 
 			$insert="insert into User (account, password, email,now_dictionary_id,now_order) values ('$account' , '$password', '$email',$dictionaryId,1)";
-			mysql_query($insert);
+			mysql_unbuffered_query($insert);
 
 			//to set user id
 			$user=UserDao::sharedUserDao()->getUserByAccount($account);
@@ -83,7 +83,7 @@
 			$database->connectDatabase();
 			$sql="select * from user where account='$account' and password='$password' ";
 			
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 			$row=mysql_fetch_array($result);
 			$database->closeDatabase();
 
@@ -100,7 +100,7 @@
 			$database=Database::sharedDatabase();
 			$database->connectDatabase();
 			$sql="select * from user where id=$userID ";
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 			$row=mysql_fetch_array($result);
 			$database->closeDatabase();
 
@@ -118,7 +118,7 @@
 			$database->connectDatabase();
 
 			$sql="select * from User where account='$account'";
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 			$database->closeDatabase();
 			$row=mysql_fetch_array($result);
 			if ($row!=null )
@@ -137,7 +137,7 @@
 
 			$sql="select distinct user.id,user.account from DicWordRela,process,user where process.DicWordRela_id=DicWordRela.id and DicWordRela.dictionary_id=$dictionaryId and process.user_id=user.id order by DicWordRela.word_order desc limit 10";
 		
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 			$database->closeDatabase();
 
 			$users=array();
@@ -154,7 +154,7 @@
 
 			$dictionaryId=$user->getDictionary()->getDictionaryID();
 			$sql="select distinct user.id,user.account from DicWordRela,process,user where process.DicWordRela_id=DicWordRela.id and DicWordRela.dictionary_id=$dictionaryId and process.user_id=user.id order by DicWordRela.word_order desc";
-			$result=mysql_query($sql);
+			$result=mysql_unbuffered_query($sql);
 			$database->closeDatabase();
 			$totalUser=mysql_num_rows($result);
 			$rank=1;
